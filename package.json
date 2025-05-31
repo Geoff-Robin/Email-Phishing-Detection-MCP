@@ -1,0 +1,28 @@
+{
+  "name": "mcpserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0",
+    "onnxruntime-node": "^1.22.0",
+    "zod": "^3.25.42"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.15.29",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
