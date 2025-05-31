@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import {StreamableHTTPServerTransport} from "@modelcontextprotocol/sdk/server/streamableHttp"
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js"
 import { getServer } from "./mcp"
 import morgan from "morgan";
 
@@ -36,3 +36,39 @@ app.post('/mcp', async (req: Request, res: Response) => {
         }
     }
 })
+
+
+app.get('/mcp', async (req: Request, res: Response) => {
+    console.log('Received GET MCP request');
+    res.writeHead(405).end(JSON.stringify({
+        jsonrpc: "2.0",
+        error: {
+            code: -32000,
+            message: "Method not allowed."
+        },
+        id: null
+    }));
+});
+
+app.delete('/mcp', async (req: Request, res: Response) => {
+    console.log('Received DELETE MCP request');
+    res.writeHead(405).end(JSON.stringify({
+        jsonrpc: "2.0",
+        error: {
+            code: -32000,
+            message: "Method not allowed."
+        },
+        id: null
+    }));
+});
+
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`MCP Stateless Streamable HTTP Server listening on port ${PORT}`);
+});
+
+process.on('SIGINT', async () => {
+    console.log('Shutting down server...');
+    process.exit(0);
+});
