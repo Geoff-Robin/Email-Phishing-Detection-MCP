@@ -12,6 +12,12 @@ const app = express()
 app.use(express.json())
 app.use(morgan("combined"))
 
+console.log("Locale settings:", {
+  LC_ALL: process.env.LC_ALL,
+  LANG: process.env.LANG,
+  LC_MESSAGES: process.env.LC_MESSAGES
+});
+
 
 app.post('/mcp', async (req: Request, res: Response) => {
     const server = getServer();
