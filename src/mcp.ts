@@ -4,8 +4,10 @@ import { InferenceSession, Tensor } from 'onnxruntime-node';
 import path from 'path';
 
 const getPrediction = async (emailText: string): Promise<string> => {
-    const modelPath = path.join(__dirname,'models','tfidf_logistic_regression.onnx')
-    const session = await InferenceSession.create(modelPath);
+    const modelPath = path.join(__dirname, 'models', 'tfidf_logistic_regression.onnx')
+    const session = await InferenceSession.create(modelPath, {
+        executionProviders: ['CPUExecutionProvider']
+    });
 
     const inputTensor = new Tensor('string', [emailText], [1]);
 
