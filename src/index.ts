@@ -3,6 +3,10 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import { getServer } from "./mcp"
 import morgan from "morgan";
 
+process.env.LC_ALL = "C";
+process.env.LANG = "C";
+process.env.LC_MESSAGES = "C";
+
 
 const app = express()
 app.use(express.json())
