@@ -2,9 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { InferenceSession, Tensor } from 'onnxruntime-node';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(__filename);
 const getPrediction = async (emailText: string): Promise<string> => {
     const modelPath = path.join(__dirname,'models','tfidf_logistic_regression.onnx')
     const session = await InferenceSession.create(modelPath);
