@@ -5,9 +5,7 @@ import path from 'path';
 
 const getPrediction = async (emailText: string): Promise<string> => {
     const modelPath = path.join(__dirname, 'models', 'tfidf_logistic_regression.onnx')
-    const session = await InferenceSession.create(modelPath, {
-        executionProviders: ['CPUExecutionProvider']
-    });
+    const session = await InferenceSession.create(modelPath);
 
     const inputTensor = new Tensor('string', [emailText], [1]);
 
@@ -15,7 +13,7 @@ const getPrediction = async (emailText: string): Promise<string> => {
     const results = await session.run(feeds);
 
     const output = results[Object.keys(results)[0]].data;
-    return output[0] === 1n ? "Phishing Email" : "Normal Email";
+    return output[0] === 1n ? "Normal Email" : "Phishing Email";
 };
 
 export const getServer = (): McpServer => {
