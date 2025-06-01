@@ -1,12 +1,12 @@
-import express, { Request, Response } from "express";
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js"
-import { getServer } from "./mcp"
-import morgan from "morgan";
-
 process.env.LC_ALL = "C";
 process.env.LANG = "C";
 process.env.LC_MESSAGES = "C";
 
+
+import express, { Request, Response } from "express";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js"
+import { getServer } from "./mcp"
+import morgan from "morgan";
 
 const app = express()
 app.use(express.json())
