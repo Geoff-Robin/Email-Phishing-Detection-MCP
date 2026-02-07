@@ -41,6 +41,3 @@ dist
 # ignore yarn.lock
 yarn.lock
 .venv/
-
-# model files
-roberta-phishing/
